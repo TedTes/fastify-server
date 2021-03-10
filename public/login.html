@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>User Login</title>
+  </head>
+  <body>
+    Username:
+    <input type="text" id="username" /><br />
+    Password :
+    <input type="password" id="password" /><br />
+    <input type="button" onclick="handleSubmit()" value="Submit" id="submit" />
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+ function handleSubmit(){
+    const username=document.getElementById("username").value;
+    const password=document.getElementById("password").value; 
+   axios.post('/login',{
+        username,password
+    }).then(response=>{
+        if(response.data===success)
+         window.location.href="/";
+    }
+  );}
+</script>
+</html>

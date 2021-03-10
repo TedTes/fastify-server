@@ -2,13 +2,13 @@ const { json } = require('express');
 const mongoose = require('mongoose');
 const Article = mongoose.model('Article');
 
-module.exports = fastify => {
-  fastify.get('/api/articles', async (req, reply) => {
+module.exports = routes => {
+  routes.get('/api/articles', async (req, reply) => {
     const articles = await Article.find().cache({ expire: 10 });
     reply.send(articles);
   });
 
-  fastify.post('/api/articles', async (req, reply) => {
+  routes.post('/api/articles', async (req, reply) => {
       
     const { title, author, content } = JSON.parse(req.body);
 
